@@ -90,17 +90,31 @@ INSERT IGNORE INTO reservations (id, house_id, user_id, checkin_date, checkout_d
 
 
 -- reviewテーブル
-INSERT IGNORE INTO review (id, house_id, user_id, star, review, created_at, updated_at) VALUES (1, 1, 1, 4, '綺麗な部屋でした。', '2023-04-01', '2023-04-02');
-INSERT IGNORE INTO review (id, house_id, user_id, star, review, created_at, updated_at) VALUES (2, 2, 2, 3, 'スタッフが親切で、よかったです。', '2023-05-01', '2023-05-02');
-INSERT IGNORE INTO review (id, house_id, user_id, star, review, created_at, updated_at) VALUES (3, 3, 3, 2, '駅に近い。', '2023-06-01', '2023-06-02');
-INSERT IGNORE INTO review (id, house_id, user_id, star, review, created_at, updated_at) VALUES (4, 4, 4, 5, '最高です。', '2023-07-01', '2023-07-02');
-INSERT IGNORE INTO review (id, house_id, user_id, star, review, created_at, updated_at) VALUES (5, 5, 5, 1, 'ゴキブリがありました。', '2023-07-01', '2023-07-01');
-INSERT IGNORE INTO review (id, house_id, user_id, star, review, created_at, updated_at) VALUES (6, 6, 6, 5, '便利でした。', '2023-08-01', '2023-07-01');
-INSERT IGNORE INTO review (id, house_id, user_id, star, review, created_at, updated_at) VALUES (7, 7, 7, 4, '素晴らしいです。', '2023-07-09', '2023-07-01');
-INSERT IGNORE INTO review (id, house_id, user_id, star, review, created_at, updated_at) VALUES (8, 8, 8, 2, '普通でした。', '2023-06-01', '2023-07-01');
-INSERT IGNORE INTO review (id, house_id, user_id, star, review, created_at, updated_at) VALUES (9, 9, 9, 2, 'ちょっと高い。', '2023-06-01', '2023-07-01');
-INSERT IGNORE INTO review (id, house_id, user_id, star, review, created_at, updated_at) VALUES (10, 10, 10, 3, '気持ちよく滞在できました。', '2023-06-01', '2023-07-01');
-INSERT IGNORE INTO review (id, house_id, user_id, star, review, created_at, updated_at) VALUES (11, 11, 11, 1, 'スリッパがなかった。', '2023-06-11', '2023-07-01');
-INSERT IGNORE INTO review (id, house_id, user_id, star, review, created_at, updated_at) VALUES (12, 12, 12, 4, '景色がよかった。', '2023-06-08', '2023-07-01');
+INSERT IGNORE INTO review (id, house_id, user_id, star, review, created_at, updated_at) VALUES (1, 20, 1, 4, '綺麗な部屋でした。', '2023-04-01', '2023-04-02');
+INSERT IGNORE INTO review (id, house_id, user_id, star, review, created_at, updated_at) VALUES (2, 20, 2, 3, 'スタッフが親切で、よかったです。', '2023-05-01', '2023-05-02');
+INSERT IGNORE INTO review (id, house_id, user_id, star, review, created_at, updated_at) VALUES (3, 20, 3, 2, '駅に近い。', '2023-06-01', '2023-06-02');
+INSERT IGNORE INTO review (id, house_id, user_id, star, review, created_at, updated_at) VALUES (4, 20, 4, 5, '最高です。', '2023-07-01', '2023-07-02');
+INSERT IGNORE INTO review (id, house_id, user_id, star, review, created_at, updated_at) VALUES (5, 20, 5, 1, 'ゴキブリがありました。', '2023-07-01', '2023-07-01');
+INSERT IGNORE INTO review (id, house_id, user_id, star, review, created_at, updated_at) VALUES (6, 20, 6, 5, '便利でした。', '2023-08-01', '2023-07-01');
+INSERT IGNORE INTO review (id, house_id, user_id, star, review, created_at, updated_at) VALUES (7, 20, 7, 4, '素晴らしいです。', '2023-07-09', '2023-07-01');
+INSERT IGNORE INTO review (id, house_id, user_id, star, review, created_at, updated_at) VALUES (8, 20, 8, 2, '普通でした。', '2023-06-01', '2023-07-01');
+INSERT IGNORE INTO review (id, house_id, user_id, star, review, created_at, updated_at) VALUES (9, 20, 9, 2, 'ちょっと高い。', '2023-06-01', '2023-07-01');
+INSERT IGNORE INTO review (id, house_id, user_id, star, review, created_at, updated_at) VALUES (10, 20, 10, 3, '気持ちよく滞在できました。', '2023-06-01', '2023-07-01');
+INSERT IGNORE INTO review (id, house_id, user_id, star, review, created_at, updated_at) VALUES (11, 20, 11, 1, 'スリッパがなかった。', '2023-06-11', '2023-07-01');
+INSERT IGNORE INTO review (id, house_id, user_id, star, review, created_at, updated_at) VALUES (12, 20, 12, 4, '景色がよかった。', '2023-06-08', '2023-07-01');
+INSERT IGNORE INTO review (id, house_id, user_id, star, review, created_at, updated_at) VALUES (13, 4, 1, 4, '景色がよかった,安かった。', '2023-06-08', '2023-07-01');
+INSERT IGNORE INTO review (id, house_id, user_id, star, review, created_at, updated_at) VALUES (14, 27, 1, 4, '景色がよかった,安かった。', '2023-06-08', '2023-07-01');
 
-
+-- favoritesテーブル
+INSERT IGNORE INTO favorites (id, house_id, user_id) VALUES (1, 1, 1);
+INSERT IGNORE INTO favorites (id, house_id, user_id) VALUES (2, 2, 1);
+INSERT IGNORE INTO favorites (id, house_id, user_id) VALUES (3, 3, 1);
+INSERT IGNORE INTO favorites (id, house_id, user_id) VALUES (4, 4, 1);
+INSERT IGNORE INTO favorites (id, house_id, user_id) VALUES (5, 5, 1);
+INSERT IGNORE INTO favorites (id, house_id, user_id) VALUES (6, 6, 1);
+INSERT IGNORE INTO favorites (id, house_id, user_id) VALUES (7, 7, 1);
+INSERT IGNORE INTO favorites (id, house_id, user_id) VALUES (8, 8, 1);
+INSERT IGNORE INTO favorites (id, house_id, user_id) VALUES (9, 9, 1);
+INSERT IGNORE INTO favorites (id, house_id, user_id) VALUES (10, 10, 1);
+INSERT IGNORE INTO favorites (id, house_id, user_id) VALUES (11, 11, 1);
+INSERT IGNORE INTO favorites (id, house_id, user_id) VALUES (12, 12, 1);

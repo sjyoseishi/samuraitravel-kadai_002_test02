@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.data.domain.Sort.Direction;
 import com.example.samuraitravel.entity.Review;
-import com.example.samuraitravel.form.HouseEditForm;
 import com.example.samuraitravel.security.UserDetailsImpl;
 
 import org.springframework.data.domain.Page;
@@ -58,8 +57,8 @@ public class ReviewController {
 	 @GetMapping("/reviews")
 	  public String reviews(@PathVariable(name = "houseId") Integer houseId,Model model,@PageableDefault(page = 0, size = 10, sort = "id", direction = Direction.ASC)Pageable pageable) {
 
-		  Page<Review> reviewPage = reviewRepository.findAll(pageable);
 		  House house = houseRepository.getReferenceById(houseId);
+		  Page<Review> reviewPage = reviewRepository.findByHouseOrderByCreatedAtDesc(house, pageable);
 		  model.addAttribute("house", house);
 	      model.addAttribute("reviewPage", reviewPage);
 	      return "review/reviews";
@@ -104,11 +103,12 @@ public class ReviewController {
 
 	  //レビューの作成
 	  @PostMapping("/create")
-	  public String create(@ModelAttribute @Validated RegisterForm registerForm, BindingResult bindingResult, RedirectAttributes redirectAttributes, @AuthenticationPrincipal UserDetailsImpl userDetailsImpl) {
+	  public String create(@PathVariable(name = "houseId") Integer houseId, @ModelAttribute @Validated RegisterForm registerForm, BindingResult bindingResult, RedirectAttributes redirectAttributes, @AuthenticationPrincipal UserDetailsImpl userDetailsImpl, Model model) {
 		   if(bindingResult.hasErrors()) {
 			   return "houses/show/review/register";
 		   }
 		   User user = userDetailsImpl.getUser();
+		   reviewService.create(registerForm, user);
 		   redirectAttributes.addFlashAttribute("successMessage", "レビューを登録しました。");
 		   return "redirect:/houses/{houseId}";
 

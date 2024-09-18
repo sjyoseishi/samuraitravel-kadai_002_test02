@@ -11,7 +11,6 @@ import com.example.samuraitravel.entity.Review;
 import com.example.samuraitravel.entity.User;
 import com.example.samuraitravel.entity.House;
 import com.example.samuraitravel.form.RegisterForm;
-import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 
 @Service
@@ -24,14 +23,7 @@ public class ReviewService {
 
 
 
-    public List<Review> getReviewsByHouseId(Integer houseId) {
-        return reviewRepository.findByHouseIdOrderByCreatedAtDesc(houseId);
-    }
-
-
-
-	public ReviewService(ReviewRepository reviewRepository, HouseRepository houseRepository,
-			UserRepository userRepository) {
+	public ReviewService(ReviewRepository reviewRepository, HouseRepository houseRepository,UserRepository userRepository) {
 		this.reviewRepository = reviewRepository;
 		this.houseRepository = houseRepository;
 		this.userRepository = userRepository;
@@ -48,14 +40,17 @@ public class ReviewService {
 
 	//新規レビューをDBに保存
 	@Transactional
-	public void create(RegisterForm RegisterForm) {
+	public void create(RegisterForm RegisterForm, User user) {
 		Review review = new Review();
 		House house = houseRepository.getReferenceById(RegisterForm.getHouseId());
-		User user = userRepository.getReferenceById(RegisterForm.getUserId());
 		review.setHouse(house);
 		review.setUser(user);
 		review.setStar(RegisterForm.getStar());
 		review.setReview(RegisterForm.getReview());
 		reviewRepository.save(review);
 	}
+
+    public boolean hasUserAlreadyReviewed(House house, User user) {
+        return reviewRepository.findByHouseAndUser(house, user) != null;
+    }
 }
